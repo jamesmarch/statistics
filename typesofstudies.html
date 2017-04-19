@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Types of Studies: Statistics for Visual Thinkers</title>
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/images/apple-touch-icon-114x114.png">
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700,300|Alegreya:400,400italic,700,700italic|Fira+Mono' rel='stylesheet' type='text/css'>
+
+    <!-- Plugins -->
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/ionicons.min.css" rel="stylesheet">
+    <link href="assets/css/simpletextrotator.css" rel="stylesheet">
+    <link href="assets/css/magnific-popup.css" rel="stylesheet">
+    <link href="assets/css/owl.carousel.css" rel="stylesheet">
+    <link href="assets/css/superslides.css" rel="stylesheet">
+    <link href="assets/css/vertical.css" rel="stylesheet">
+    <link href="assets/css/animate.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/component.css" />
+
+
+    <!-- Template core CSS -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <style type="text/css">
+        #wrapper {
+            padding: 10% 0 10% 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        #content {
+            position: relative;
+            width: 500px;
+            text-align: center;
+            margin: 0 auto;
+            vertical-align: middle;
+        }
+        
+        #outer-circle {
+            background: #033649;
+            border-radius: 50%;
+            height: 500px;
+            width: 500px;
+            position: relative;
+            /* 
+    Child elements with absolute positioning will be 
+    positioned relative to this div 
+   */
+        }
+        
+        #inner-circle {
+            position: absolute;
+            background: #036564;
+            border-radius: 50%;
+            height: 100px;
+            width: 100px;
+            /*
+    Put top edge and left edge in the center
+   */
+            top: 50%;
+            left: 50%;
+            margin: -50px 0px 0px -50px;
+            transition: ease-in-out .35s;
+            /* 
+    Offset the position correctly with
+    minus half of the width and minus half of the height 
+   */
+        }
+        
+        #inner-circle:hover {
+            height: 200px;
+            width: 200px;
+            margin: -100px 0px 0px -100px;
+        }
+        
+        .sidebar {
+            float: right;
+            text-align: left;
+            font-size: 1.25rem;
+            line-height: 1.5rem;
+            color: #333;
+        }
+        
+        span.population {
+            color: #033649;
+            font-size: 2em;
+        }
+        
+        span.sample {
+            color: #036564;
+            font-size: 2em;
+        }
+        
+        .grid {
+            border: 1px solid #ccc;
+            border-top: 0;
+            border-bottom: 0;
+            width: 80%;
+            max-width: 700px;
+            height: 260px;
+            margin: 50px auto;
+            position: relative;
+        }
+        
+        .grid i.x {
+            background: transparent;
+            width: 100%;
+            height: 0;
+            z-index: 0;
+            position: absolute;
+            border-top: 1px dotted #ccc;
+            left: 0;
+        }
+        
+        .grid i.x:nth-of-type(1) {
+            bottom: 20px;
+        }
+        
+        .grid i.x:nth-of-type(1):before {
+            content: "1";
+            position: absolute;
+            right: 100%;
+            font-style: normal;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            transform: translateY(-50%);
+            font-size: 12px;
+            color: #999;
+            width: 30px;
+            margin-right: 10px;
+            text-align: right;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .grid i.x:nth-of-type(2) {
+            bottom: 40px;
+        }
+        
+        .grid i.x:nth-of-type(2):before {
+            content: "2";
+            position: absolute;
+            right: 100%;
+            font-style: normal;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            transform: translateY(-50%);
+            font-size: 12px;
+            color: #999;
+            width: 30px;
+            margin-right: 10px;
+            text-align: right;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .grid i.x:nth-of-type(3) {
+            bottom: 60px;
+        }
+        
+        .grid i.x:nth-of-type(3):before {
+            content: "3";
+            position: absolute;
+            right: 100%;
+            font-style: normal;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            transform: translateY(-50%);
+            font-size: 12px;
+            color: #999;
+            width: 30px;
+            margin-right: 10px;
+            text-align: right;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .grid i.x:nth-of-type(4) {
+            bottom: 80px;
+        }
+        
+        .grid i.x:nth-of-type(4):before {
+            content: "4";
+            position: absolute;
+            right: 100%;
+            font-style: normal;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            transform: translateY(-50%);
+            font-size: 12px;
+            color: #999;
+            width: 30px;
+            margin-right: 10px;
+            text-align: right;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .grid i.x:nth-of-type(5) {
+            bottom: 100px;
+        }
+        
+        .grid i.x:nth-of-type(5):before {
+            content: "5";
+            position: absolute;
+            right: 100%;
+            font-style: normal;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            transform: translateY(-50%);
+            font-size: 12px;
+            color: #999;
+            width: 30px;
+            margin-right: 10px;
+            text-align: right;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .grid i.x:nth-of-type(6) {
+            bottom: 120px;
+        }
+        
+        .grid i.x:nth-of-type(6):before {
+            content: "6";
+            position: absolute;
+            right: 100%;
+            font-style: normal;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            transform: translateY(-50%);
+            font-size: 12px;
+            color: #999;
+            width: 30px;
+            margin-right: 10px;
+            text-align: right;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .grid i.x:nth-of-type(7) {
+            bottom: 140px;
+        }
+        
+        .grid i.x:nth-of-type(7):before {
+            content: "7";
+            position: absolute;
+            right: 100%;
+            font-style: normal;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            transform: translateY(-50%);
+            font-size: 12px;
+            color: #999;
+            width: 30px;
+            margin-right: 10px;
+            text-align: right;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .grid i.x:nth-of-type(8) {
+            bottom: 160px;
+        }
+        
+        .grid i.x:nth-of-type(8):before {
+            content: "8";
+            position: absolute;
+            right: 100%;
+            font-style: normal;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            transform: translateY(-50%);
+            font-size: 12px;
+            color: #999;
+            width: 30px;
+            margin-right: 10px;
+            text-align: right;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .grid i.x:nth-of-type(9) {
+            bottom: 180px;
+        }
+        
+        .grid i.x:nth-of-type(9):before {
+            content: "9";
+            position: absolute;
+            right: 100%;
+            font-style: normal;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            transform: translateY(-50%);
+            font-size: 12px;
+            color: #999;
+            width: 30px;
+            margin-right: 10px;
+            text-align: right;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .grid i.x:nth-of-type(10) {
+            bottom: 200px;
+        }
+        
+        .grid i.x:nth-of-type(10):before {
+            content: "10";
+            position: absolute;
+            right: 100%;
+            font-style: normal;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            transform: translateY(-50%);
+            font-size: 12px;
+            color: #999;
+            width: 30px;
+            margin-right: 10px;
+            text-align: right;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .grid i.x:nth-of-type(11) {
+            bottom: 220px;
+        }
+        
+        .grid i.x:nth-of-type(11):before {
+            content: "11";
+            position: absolute;
+            right: 100%;
+            font-style: normal;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            transform: translateY(-50%);
+            font-size: 12px;
+            color: #999;
+            width: 30px;
+            margin-right: 10px;
+            text-align: right;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .grid i.x:nth-of-type(12) {
+            bottom: 240px;
+        }
+        
+        .grid i.x:nth-of-type(12):before {
+            content: "12";
+            position: absolute;
+            right: 100%;
+            font-style: normal;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            transform: translateY(-50%);
+            font-size: 12px;
+            color: #999;
+            width: 30px;
+            margin-right: 10px;
+            text-align: right;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .grid i.x:nth-of-type(13) {
+            bottom: 260px;
+        }
+        
+        .grid i.x:nth-of-type(13):before {
+            content: "13";
+            position: absolute;
+            right: 100%;
+            font-style: normal;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            transform: translateY(-50%);
+            font-size: 12px;
+            color: #999;
+            width: 30px;
+            margin-right: 10px;
+            text-align: right;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .graph {
+            background-color: #036564;
+            background-image: -webkit-linear-gradient(#036564, #033649);
+            background-image: linear-gradient(#036564, #033649);
+            opacity: .65;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            -webkit-transition: all 400ms ease-in-out;
+            -moz-transition: all 400ms ease-in-out;
+            transition: all 400ms ease-in-out;
+            z-index: 1;
+            clip-path: polygon(0% 70%, 10% 50%, 20% 60%, 30% 23%, 40% 50%, 50% 67%, 60% 57%, 70% 68%, 80% 70%, 90% 55%, 100% 10%, 100% 100%, 0% 100%);
+            -webkit-clip-path: polygon(0% 70%, 10% 50%, 20% 60%, 30% 23%, 40% 50%, 50% 67%, 60% 57%, 70% 68%, 80% 70%, 90% 55%, 100% 10%, 100% 100%, 0% 100%);
+            -webkit-animation: do 1.2s ease-in-out forwards;
+            -moz-animation: do 1.2s ease-in-out forwards;
+            animation: do 1.2s ease-in-out forwards;
+        }
+        
+        .graph:hover {
+            opacity: .8;
+        }
+        
+        @-webkit-keyframes do {
+            from {
+                clip-path: polygon(0% 100%, 10% 100%, 20% 100%, 30% 100%, 40% 100%, 50% 100%, 60% 100%, 70% 100%, 80% 100%, 90% 100%, 100% 100%, 100% 100%, 0% 100%);
+                -webkit-clip-path: polygon(0% 100%, 10% 100%, 20% 100%, 30% 100%, 40% 100%, 50% 100%, 60% 100%, 70% 100%, 80% 100%, 90% 100%, 100% 100%, 100% 100%, 0% 100%);
+            }
+        }
+        
+        @-moz-keyframes do {
+            from {
+                clip-path: polygon(0% 100%, 10% 100%, 20% 100%, 30% 100%, 40% 100%, 50% 100%, 60% 100%, 70% 100%, 80% 100%, 90% 100%, 100% 100%, 100% 100%, 0% 100%);
+                -webkit-clip-path: polygon(0% 100%, 10% 100%, 20% 100%, 30% 100%, 40% 100%, 50% 100%, 60% 100%, 70% 100%, 80% 100%, 90% 100%, 100% 100%, 100% 100%, 0% 100%);
+            }
+        }
+        
+        @keyframes do {
+            from {
+                clip-path: polygon(0% 100%, 10% 100%, 20% 100%, 30% 100%, 40% 100%, 50% 100%, 60% 100%, 70% 100%, 80% 100%, 90% 100%, 100% 100%, 100% 100%, 0% 100%);
+                -webkit-clip-path: polygon(0% 100%, 10% 100%, 20% 100%, 30% 100%, 40% 100%, 50% 100%, 60% 100%, 70% 100%, 80% 100%, 90% 100%, 100% 100%, 100% 100%, 0% 100%);
+            }
+        }
+        
+        .label {
+            color: #999;
+            font-size: .9em;
+            font-style: italic;
+            text-align: center;
+            margin: 1em 0;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- PRELOADER -->
+    <div class="page-loader">
+        <div class="loader">Loading...</div>
+    </div>
+    <!-- /PRELOADER -->
+
+    <!-- OVERLAY MENU -->
+    <div id="overlay-menu" class="overlay-menu">
+
+        <a href="index.html#" id="overlay-menu-hide" class="navigation-hide"><i class="ion-close-round"></i></a>
+
+        <div class="overlay-menu-inner">
+            <nav class="overlay-menu-nav">
+
+                <ul id="nav">
+
+
+
+                    <li><a href="index.html">Why Designers Should Care About Statistics</a></li>
+                    <br />
+                    <li class="slidedown">
+                        <a href="index.html#">101: The Basics, Visualized</a>
+                        <ul>
+                            <li><a href="sampling.html">Sampling</a></li>
+                            <li><a href="typesofstudies.html">Types of Studies</a></li>
+                            <li><a href="typesofdata.html">Types of Data</a></li>
+                            <li><a href="p.html">Null Hypothesis Testing</a></li>
+                        </ul>
+                    </li>
+                    <br />
+                    <li class="slidedown">
+                        <a href="index.html#">102: Critical Considerations</a>
+                        <ul>
+                            <li><a href="validity.html">Validity</a></li>
+                            <li><a href="reliability.html">Reliability</a></li>
+                            <li><a href="control.html">Experimental Control</a></li>
+                            <li><a href="bias.html">Bias</a></li>
+                            <li><a href="misrepresentingdata.html">Misrepresenting Data</a></li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+            </nav>
+        </div>
+
+        <div class="overlay-navigation-footer">
+
+
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-12 text-center">
+                        <p class="copyright font-alt m-b-0">© 2016 James March</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /OVERLAY MENU -->
+
+    <!-- WRAPPER -->
+    <div class="wrapper">
+
+        <!-- NAVIGATION -->
+        <nav class="navbar navbar-custom navbar-transparent navbar-light navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+                    <!-- YOU LOGO HERE -->
+                    <a class="navbar-brand" href="index.html">
+                        <!-- IMAGE OR SIMPLE TEXT -->
+                        <img src="assets/images/data-logo.svg" width="40" alt="">
+                    </a>
+                </div>
+
+                <!-- ICONS NAVBAR -->
+                <ul id="icons-navbar" class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="index.html#" id="toggle-menu" class="show-overlay" title="Menu">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /ICONS NAVBAR -->
+
+                <ul class="extra-navbar nav navbar-nav navbar-right">
+
+                </ul>
+
+            </div>
+
+        </nav>
+        <!-- /NAVIGATION -->
+
+        <!-- HERO -->
+        <section class="module module-parallax bg-light-30">
+            <div id="totop"></div>
+
+            <!-- HERO TEXT -->
+
+
+
+
+
+            <div class="container">
+
+
+
+
+                <div class="col-md-12 text-center">
+                    <h1 class="mh-line-size-3 font-alt m-b-20">Types of Studies</h1>
+
+                </div>
+
+
+
+
+
+            </div>
+            <!-- /HERO TEXT -->
+
+        </section>
+        <!-- /HERO -->
+
+
+
+        <!-- STANDARD PARALLAX -->
+        <section class="module module-parallax bg-light-30" data-background="assets/images/desc.jpg">
+
+            <div class="container">
+
+                <!-- MODULE TITLE -->
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+
+                    </div>
+                </div>
+                <!-- /MODULE TITLE -->
+
+            </div>
+
+        </section>
+        <!-- /STANDARD PARALLAX -->
+
+
+
+
+
+        <!-- PARAGRAPH -->
+        <section class="module">
+
+            <div class="container">
+
+                <!-- MODULE TITLE -->
+                <div class="row">
+
+
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="font-serif">Descriptive Studies</h1>
+
+
+                        <h5>People seemed to enjoy the event.</h5>
+                    </div>
+                </div>
+                <!-- /MODULE TITLE -->
+
+
+                <div class="row">
+
+                    <div class="col-md-8 col-md-offset-2">
+
+
+                        <p>Descriptive statistics is the term given to the analysis of data that helps describe, show or summarize data in a meaningful way such that, for example, patterns might emerge from the data. Descriptive statistics do not, however, allow us to make conclusions beyond the data we have analysed or reach conclusions regarding any hypotheses we might have made; they are simply a way to describe our data.</p>
+
+                        <p>If all we ever did was present our raw data, it would be hard to visulize what the data was showing, especially if there was a lot of it. Descriptive statistics therefore enables us to present the data in a more meaningful way, which allows simpler interpretation of the data.</p>
+
+
+                        <div class='grid'>
+                            <i class='x'></i>
+                            <i class='x'></i>
+                            <i class='x'></i>
+                            <i class='x'></i>
+                            <i class='x'></i>
+                            <i class='x'></i>
+                            <i class='x'></i>
+                            <i class='x'></i>
+                            <i class='x'></i>
+                            <i class='x'></i>
+                            <i class='x'></i>
+                            <i class='x'></i>
+                            <i class='x'></i>
+                            <div class='graph'></div>
+                            <div class="text-center"><code>&uarr; Fig. 3: A longitudinal (over time) graph of some data.</code></div>
+
+                        </div>
+
+                        <p>Doesn't this chart do a good job of seeing increases and decreases over time? </p>
+                        <p>If we had the results of 100 pieces of students' coursework and were interested in the overall performance of those students. We would also be interested in the distribution or spread of the marks. Descriptive statistics allow us to do this. How to properly describe data through statistics and graphs is an important topic and discussed in other Laerd Statistics guides. Typically, there are two general types of statistic that are used to describe data:</p>
+
+                        <blockquote>
+                            <h5>Measures of central tendency</h5>
+                            <p>These are ways of describing the central position of a frequency distribution for a group of data. In this case, the frequency distribution is simply the distribution and pattern of marks scored by the 100 students from the lowest to the highest. We can describe this central position using a number of statistics, including the mode, median, and mean.</p>
+                        </blockquote>
+
+                        <blockquote>
+                            <h5>Measures of spread</h5>
+                            <p>These are ways of summarizing a group of data by describing how spread out the scores are. For example, the mean score of our 100 students may be 65 out of 100. However, not all students will have scored 65 marks. Rather, their scores will be spread out. Some will be lower and others higher. Measures of spread help us to summarize how spread out these scores are. To describe this spread, a number of statistics are available to us, including the range, quartiles, absolute deviation, variance and standard deviation.</p>
+                        </blockquote>
+
+                        <p>When we use descriptive statistics it is useful to summarize our group of data using a combination of tabulated description (i.e., tables), graphical description (i.e., graphs and charts) and statistical commentary (i.e., a discussion of the results).</p>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- STANDARD PARALLAX -->
+        <section class="module module-parallax bg-light-30" data-background="assets/images/inf.jpg">
+
+            <div class="container">
+
+                <!-- MODULE TITLE -->
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+
+                    </div>
+                </div>
+                <!-- /MODULE TITLE -->
+
+            </div>
+
+        </section>
+        <!-- /STANDARD PARALLAX -->
+
+
+        <!-- PARAGRAPH -->
+        <section class="module">
+
+            <div class="container">
+
+                <!-- MODULE TITLE -->
+                <div class="row">
+
+
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="font-serif">Inferential Studies</h1>
+
+
+                        <h5>People seemed to enjoy the event.</h5>
+                    </div>
+                </div>
+                <!-- /MODULE TITLE -->
+
+                <div class="row">
+
+                    <div class="col-md-8 col-md-offset-2">
+
+                        <p>We have seen that descriptive statistics provide information about our immediate group of data. For example, we could calculate the mean and standard deviation of the exam marks for the 100 students and this could provide valuable information about this group of 100 students. Any group of data like this, which includes all the data you are interested in, is called a population. A population can be small or large, as long as it includes all the data you are interested in. For example, if you were only interested in the exam marks of 100 students, the 100 students would represent your population. Descriptive statistics are applied to populations, and the properties of populations, like the mean or standard deviation, are called parameters as they represent the whole population (i.e., everybody you are interested in).</p>
+
+                        <p>Often, however, you do not have access to the whole population you are interested in investigating, but only a limited number of data instead. For example, you might be interested in the exam marks of all students in the UK. It is not feasible to measure all exam marks of all students in the whole of the UK so you have to measure a smaller sample of students (e.g., 100 students), which are used to represent the larger population of all UK students. Properties of samples, such as the mean or standard deviation, are not called parameters, but statistics. Inferential statistics are techniques that allow us to use these samples to make generalizations about the populations from which the samples were drawn. It is, therefore, important that the sample accurately represents the population. The process of achieving this is called <a href="sampling.html">sampling</a>. Inferential statistics arise out of the fact that sampling naturally incurs sampling error and thus a sample is not expected to perfectly represent the population. </P>
+
+
+                        <div id="wrapper">
+                            <div id="content">
+                                <div id="outer-circle">
+                                    <div id="inner-circle">
+                                    </div>
+                                </div>
+                                <div class="sidebar">
+                                    <span class="population">•</span> Descriptive
+                                    <br />
+                                    <span class="sample">•</span> Inferential
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center"><code>&uarr; Fig. 4: Descriptive versus inferential statistics.</code></div>
+
+
+                        <br />
+
+                        <p></p>
+
+
+                    </div>
+
+
+
+
+
+
+                </div>
+            </div>
+        </section>
+
+        <!-- DIVIDER -->
+        <div class="col-md-4 col-md-offset-4">
+            <hr class="divider">
+        </div>
+
+        <section class="module">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <h6>References</h6>
+                        <code>
+    Bandyopadhyay, P. S.; Forster, M. R., eds. (2011), Philosophy of Statistics, Elsevier.<br />
+Bickel, Peter J.; Doksum, Kjell A. (2001). Mathematical statistics: Basic and selected topics 1 (Second (updated printing 2007) ed.). Prentice Hall. ISBN 0-13-850363-X. MR 443141.<br />
+Cox, D. R. (2006). Principles of Statistical Inference, Cambridge University Press. ISBN 0-521-68567-2.<br />
+Fisher, R. A. (1955), "Statistical methods and scientific induction", Journal of the Royal Statistical Society, Series B, 17, 69—78. (criticism of statistical theories of Jerzy Neyman and Abraham Wald). <br />
+Freedman, D. A. (2009). Statistical models: Theory and practice (revised ed.). Cambridge University Press. pp. xiv+442 pp. ISBN 978-0-521-74385-3. MR 2489600.<br />
+Freedman, D. A. (2010). Statistical Models and Causal Inferences: A Dialogue with the Social Sciences (Edited by David Collier, Jasjeet S. Sekhon, and Philip B. Stark), Cambridge University Press.</code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGINATION -->
+        <section class="module">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4 text-center text-italic text-pagination">
+                        <A href="sampling.html">&#8592; sampling</A> &#8212;
+                        <A href="typesofdata.html">types of data &#8594;</A>
+                    </div>
+                </div>
+        </section>
+        <!-- /PAGINATION -->
+
+        <!-- FOOTER -->
+        <footer class="module bg-light">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <p class="copyright text-center m-b-0">© 2016 James March<br /><a href="colophon.html">Colophon &rarr;</a></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </footer>
+        <!-- /FOOTER -->
+
+        </div>
+        <!-- /WRAPPER -->
+
+        <!-- SCROLLTOP -->
+        <div class="scroll-up">
+            <a href="#totop"><i class="fa fa-angle-double-up"></i></a>
+        </div>
+
+        <!-- Javascript files -->
+        <script src="assets/js/jquery-2.1.3.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.superslides.min.js"></script>
+        <script src="assets/js/jquery.mb.YTPlayer.min.js"></script>
+        <script src="assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="assets/js/owl.carousel.min.js"></script>
+        <script src="assets/js/jquery.simple-text-rotator.min.js"></script>
+        <script src="assets/js/imagesloaded.pkgd.js"></script>
+        <script src="assets/js/isotope.pkgd.min.js"></script>
+        <script src="assets/js/packery-mode.pkgd.min.js"></script>
+        <script src="assets/js/appear.js"></script>
+        <script src="assets/js/jquery.easing.1.3.js"></script>
+        <script src="assets/js/wow.min.js"></script>
+        <script src="assets/js/jqBootstrapValidation.js"></script>
+        <script src="assets/js/jquery.fitvids.js"></script>
+        <script src="assets/js/jquery.parallax-1.1.3.js"></script>
+        <script src="assets/js/smoothscroll.js"></script>
+        <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+        <script src="assets/js/gmaps.js"></script>
+        <script src="assets/js/contact.js"></script>
+        <script src="assets/js/custom.js"></script>
+        <script src="assets/js/TweenLite.min.js"></script>
+        <script src="assets/js/EasePack.min.js"></script>
+        <script src="assets/js/rAF.js"></script>
+
+
+</body>
+
+</html>

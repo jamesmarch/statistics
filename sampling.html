@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Sampling: Statistics for Visual Thinkers</title>
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/images/apple-touch-icon-114x114.png">
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700,300|Alegreya:400,400italic,700,700italic|Fira+Mono' rel='stylesheet' type='text/css'>
+
+    <!-- Plugins -->
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/ionicons.min.css" rel="stylesheet">
+    <link href="assets/css/simpletextrotator.css" rel="stylesheet">
+    <link href="assets/css/magnific-popup.css" rel="stylesheet">
+    <link href="assets/css/owl.carousel.css" rel="stylesheet">
+    <link href="assets/css/superslides.css" rel="stylesheet">
+    <link href="assets/css/vertical.css" rel="stylesheet">
+    <link href="assets/css/animate.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/component.css" />
+
+
+    <!-- Template core CSS -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+
+    <style type="text/css">
+        canvas#canvas {
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+        
+        #wrapper {
+            padding: 10% 0 10% 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        #content {
+            position: relative;
+            width: 500px;
+            text-align: center;
+            margin: 0 auto;
+            vertical-align: middle;
+        }
+        
+        #outer-circle {
+            background: #EFEFEF;
+            border-radius: 50%;
+            height: 500px;
+            width: 500px;
+            position: relative;
+            /* 
+    Child elements with absolute positioning will be 
+    positioned relative to this div 
+   */
+        }
+        
+        #inner-circle {
+            position: absolute;
+            background: #CCC;
+            border-radius: 50%;
+            height: 100px;
+            width: 100px;
+            /*
+    Put top edge and left edge in the center
+   */
+            top: 50%;
+            left: 50%;
+            margin: -50px 0px 0px -50px;
+            transition: ease-in-out .35s;
+            /* 
+    Offset the position correctly with
+    minus half of the width and minus half of the height 
+   */
+        }
+        
+        #inner-circle:hover {
+            height: 200px;
+            width: 200px;
+            margin: -100px 0px 0px -100px;
+        }
+        
+        .sidebar {
+            float: right;
+            text-align: left;
+            font-size: 1.25rem;
+            line-height: 1.5rem;
+            color: #333;
+        }
+        
+        span.population {
+            color: #EFEFEF;
+            font-size: 2em;
+        }
+        
+        span.sample {
+            color: #CCC;
+            font-size: 2em;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+
+    <!-- PRELOADER -->
+    <div class="page-loader">
+        <div class="loader">Loading...</div>
+    </div>
+    <!-- /PRELOADER -->
+
+    <!-- OVERLAY MENU -->
+    <div id="overlay-menu" class="overlay-menu">
+
+        <a href="index.html#" id="overlay-menu-hide" class="navigation-hide"><i class="ion-close-round"></i></a>
+
+        <div class="overlay-menu-inner">
+            <nav class="overlay-menu-nav">
+
+                <ul id="nav">
+
+                    <a href="index.html#">Home</a>
+
+
+                    <li><a href="index.html">Why Designers Should Care About Statistics</a></li>
+                    <br />
+                    <li class="slidedown">
+                        <a href="index.html#">101: The Basics, Visualized</a>
+                        <ul>
+                            <li><a href="sampling.html">Sampling</a></li>
+                            <li><a href="typesofstudies.html">Types of Studies</a></li>
+                            <li><a href="typesofdata.html">Types of Data</a></li>
+                            <li><a href="p.html">Null Hypothesis Testing</a></li>
+                        </ul>
+                    </li>
+                    <br />
+                    <li class="slidedown">
+                        <a href="index.html#">102: Critical Considerations</a>
+                        <ul>
+                            <li><a href="validity.html">Validity</a></li>
+                            <li><a href="reliability.html">Reliability</a></li>
+                            <li><a href="control.html">Experimental Control</a></li>
+                            <li><a href="bias.html">Bias</a></li>
+                            <li><a href="misrepresentingdata.html">Misrepresenting Data</a></li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+
+            </nav>
+        </div>
+
+        <div class="overlay-navigation-footer">
+
+
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-12 text-center">
+                        <p class="copyright font-alt m-b-0">© 2016 James March</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /OVERLAY MENU -->
+
+    <!-- WRAPPER -->
+    <div class="wrapper">
+
+        <!-- NAVIGATION -->
+        <nav class="navbar navbar-custom navbar-transparent navbar-light navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+                    <!-- YOU LOGO HERE -->
+                    <a class="navbar-brand" href="index.html">
+                        <!-- IMAGE OR SIMPLE TEXT -->
+                        <img src="assets/images/data-logo.svg" width="40" alt="">
+                    </a>
+                </div>
+
+                <!-- ICONS NAVBAR -->
+                <ul id="icons-navbar" class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="index.html#" id="toggle-menu" class="show-overlay" title="Menu">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /ICONS NAVBAR -->
+
+                <ul class="extra-navbar nav navbar-nav navbar-right">
+
+                </ul>
+
+            </div>
+
+        </nav>
+        <!-- /NAVIGATION -->
+
+        <!-- HERO -->
+        <section class="module module-parallax bg-light-30">
+            <div id="totop"></div>
+
+            <!-- HERO TEXT -->
+
+
+
+
+
+            <div class="container">
+
+
+
+
+                <div class="col-md-12 text-center">
+                    <h1 class="mh-line-size-3 font-alt m-b-20">Sampling</h1>
+                </div>
+                <canvas id="canvas" width="100%"></canvas>
+                <div class="text-center"><code>&uarr; Fig. 1: Randomized sampling.</code></div>
+
+
+
+            </div>
+            <!-- /HERO TEXT -->
+
+        </section>
+        <!-- /HERO -->
+
+
+
+        <!-- PARAGRAPH -->
+        <section class="module">
+
+            <div class="container">
+
+
+
+
+                <div class="row">
+
+                    <div class="col-md-8 col-md-offset-2">
+                        <p>Solving a problem in statistics usually starts with sampling. Sampling is about choosing which data to take for later analysis. Typically, the sample you're wondering about (i.e., early 20s movie-goers, female CEOs, American dolphon trainers, residents of Saskatoon) is impossibly large, so instead of doing the impossible and gathering information from every member of the given population, you take a sample. As a general rule, samples need to be <em>random</em>, meaning the chance or probability of selecting one individual is the same as the chance of selecting any other individual.</p>
+
+                        <p>In practice, random samples are always taken by means of a well-defined procedure. A procedure is a set of rules, a sequence of steps written down on paper and followed to the letter. Even so, some <a href="bias.html">bias</a> may remain in the sample. Consider the problem of designing a sample to predict the result of an election poll. All known methods have their problems, and the results of an election are often different from predictions based on a sample. If you collect opinions by using telephones, or by meeting people in the street, the sample always has bias. Therefore, in cases like this a completely neutral sample is never possible. In such cases a statistician will think about how to measure the amount of bias, and there are ways to estimate this.</p>
+
+                        <div id="wrapper">
+                            <div id="content">
+                                <div id="outer-circle">
+                                    <div id="inner-circle">
+                                    </div>
+                                </div>
+                                <div class="sidebar">
+                                    <span class="population">•</span> Population
+                                    <br />
+                                    <span class="sample">•</span> Sample
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center"><code>&uarr; Fig. 2: A sample within a population.</code></div>
+
+
+                        <br />
+
+                        <p>Again, a sample comprises (hopefully) randomized pieces of a population.</p>
+                        <p>A similar situation occurs when scientists measure a physical property, say the weight of a piece of metal, or the speed of light. If we weigh an object with sensitive equipment we will get minutely different results. No system of measurement is ever perfect. We get a series of estimates, each one being a measurement. These are samples, with a certain degree of error. Statistics is designed to describe error, and carry out analysis on this kind of data.</p>
+
+                        <h5 class="font-serif">There are different kinds of samples.</h5>
+
+                        <p>A <em>complete sample</em> includes all the elements that have a given property. An <em>unbiased</em> or representative sample is produced by taking a complete sample and selecting elements from it, in a process that does not depend on the properties of the elements.</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+        <!-- /PARAGRAPH -->
+
+
+
+        <!-- DIVIDER -->
+        <div class="col-md-4 col-md-offset-4">
+            <hr class="divider">
+        </div>
+
+
+
+
+
+        <!-- TABS -->
+        <section class="module">
+
+            <div class="container">
+
+                <!-- MODULE TITLE -->
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <h2 class="module-title font-alt">types of distributions</h2>
+                    </div>
+                </div>
+                <!-- /MODULE TITLE -->
+                <div class="col-md-8 col-md-offset-2">
+
+                    <p>The distribution of a statistical data set (or a population) is a listing or function showing all the possible values (or intervals) of the data and how often they occur. When a distribution of categorical data is organized, you see the number or percentage of individuals in each group. When a distribution of numerical data is organized, they’re often ordered from smallest to largest, broken into reasonably sized groups (if appropriate), and then put into graphs and charts to examine the shape, center, and amount of variability in the data.</p>
+
+                    <p>The world of statistics includes dozens of different distributions for categorical and numerical data; the most common ones have their own names. One of the most well-known distributions is called the <strong>normal distribution</strong>, also known as the bell-shaped curve. The normal distribution is based on numerical data that is continuous; its possible values lie on the entire real number line. Its overall shape, when the data are organized in graph form, is a symmetric bell-shape. In other words, most (around 68%) of the data are centered around the mean (giving you the middle part of the bell), and as you move farther out on either side of the mean, you find fewer and fewer values (representing the downward sloping sides on either side of the bell).</p>
+
+                    <p>Due to symmetry, the mean and the median lie at the same point, directly in the center of the normal distribution. The standard deviation is measured by the distance from the mean to the inflection point (where the curvature of the bell changes from concave up to concave down).</p>
+
+                    <p>Take a look at a few different distributions types:</p>
+                </div>
+                <div class="row multi-columns-row">
+
+                    <div class="col-md-10 col-md-offset-1">
+
+                        <!-- TABS -->
+                        <div role="tabpanel">
+                            <ul class="nav nav-tabs font-alt" role="tablist">
+                                <li class="active"><a href="sampling.html#normal" data-toggle="tab">Normal</a></li>
+                                <li><a href="sampling.html#skewed" data-toggle="tab">Skewed</a></li>
+                                <li><a href="sampling.html#errored" data-toggle="tab">Errored</a></li>
+
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="normal">
+                                    <img src="assets/images/normal-distribution.png">
+                                </div>
+                                <div class="tab-pane" id="skewed">
+                                    <img src="assets/images/skewed-distribution.png">
+
+                                </div>
+
+                                <div class="tab-pane" id="errored">
+                                    <img src="assets/images/errored-distribution.png">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /TABS -->
+                <div class="col-md-8 col-md-offset-2">
+                    <p>The big take home here is that a <em>sample is used to represent a population</em> and through various other considerations (see: the rest of this publication), we should try our darndest to make the best representation possible.
+
+
+                    </p>
+
+                </div>
+        </section>
+
+        <!-- DIVIDER -->
+        <div class="col-md-4 col-md-offset-4">
+            <hr class="divider">
+        </div>
+
+        <section class="module">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <h6>References</h6>
+                        <code>Chambers, R L, and Skinner, C J (editors) (2003), Analysis of Survey Data, Wiley, ISBN 0-471-89987-9.<br />
+Deming, W. Edwards (1975) On probability as a basis for action, The American Statistician, 29(4), pp146–152.<br />
+Gy, P (1992) Sampling of Heterogeneous and Dynamic Material Systems: Theories of Heterogeneity, Sampling and Homogenizing. <br />
+Korn, E.L., and Graubard, B.I. (1999) Analysis of Health Surveys, Wiley, ISBN 0-471-13773-1.</code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGINATION -->
+        <section class="module">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4 text-center text-italic text-pagination">
+                        <A href="index.html">&#8592; index</A> &#8212;
+                        <A href="typesofstudies.html">types of studies &#8594;</A>
+                    </div>
+                </div>
+        </section>
+        <!-- /PAGINATION -->
+
+        <!-- FOOTER -->
+        <footer class="module bg-light">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <p class="copyright text-center m-b-0">© 2016 James March<br /><a href="colophon.html">Colophon &rarr;</a></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </footer>
+        <!-- /FOOTER -->
+
+        </div>
+        <!-- /WRAPPER -->
+
+        <!-- SCROLLTOP -->
+        <div class="scroll-up">
+            <a href="#totop"><i class="fa fa-angle-double-up"></i></a>
+        </div>
+
+        <!-- Javascript files -->
+        <script src="assets/js/jquery-2.1.3.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.superslides.min.js"></script>
+        <script src="assets/js/jquery.mb.YTPlayer.min.js"></script>
+        <script src="assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="assets/js/owl.carousel.min.js"></script>
+        <script src="assets/js/jquery.simple-text-rotator.min.js"></script>
+        <script src="assets/js/imagesloaded.pkgd.js"></script>
+        <script src="assets/js/isotope.pkgd.min.js"></script>
+        <script src="assets/js/packery-mode.pkgd.min.js"></script>
+        <script src="assets/js/appear.js"></script>
+        <script src="assets/js/jquery.easing.1.3.js"></script>
+        <script src="assets/js/wow.min.js"></script>
+        <script src="assets/js/jqBootstrapValidation.js"></script>
+        <script src="assets/js/jquery.fitvids.js"></script>
+        <script src="assets/js/jquery.parallax-1.1.3.js"></script>
+        <script src="assets/js/smoothscroll.js"></script>
+        <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+        <script src="assets/js/gmaps.js"></script>
+        <script src="assets/js/contact.js"></script>
+        <script src="assets/js/custom.js"></script>
+        <script src="assets/js/TweenLite.min.js"></script>
+        <script src="assets/js/EasePack.min.js"></script>
+        <script src="assets/js/rAF.js"></script>
+        <script type="text/javascript">
+            var can = document.getElementById('canvas'),
+                ctx = can.getContext('2d'),
+                meanWidth, meanHeight, deviation = 50;
+
+            canvas.width = 640;
+            canvas.height = 480;
+
+            Math.nrand = function () {
+                var x1, x2, rad;
+
+                do {
+                    x1 = 2 * this.random() - 1;
+                    x2 = 2 * this.random() - 1;
+                    rad = x1 * x1 + x2 * x2;
+                } while (rad >= 1 || rad == 0);
+
+                var c = this.sqrt(-2 * Math.log(rad) / rad);
+
+                return x1 * c;
+            };
+
+            meanWidth = canvas.width / 2;
+            meanHeight = canvas.height / 2;
+
+            ctx.fillStyle = "hsla(198, 50%, 00%, 0.2)";
+            console.log('running');
+
+            function draw() {
+                for (var i = 0; i < 100; i++) {
+                    dot();
+                }
+
+                window.requestAnimFrame(draw);
+            }
+
+            function dot() {
+                var randX = Math.nrand() * deviation + meanWidth,
+                    randY = Math.nrand() * deviation + meanHeight;
+
+                ctx.fillRect(randX, randY, 2, 2);
+            }
+
+            window.requestAnimFrame = function () {
+                return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (a) {
+                    window.setTimeout(a, 1E3 / 60)
+                }
+            }();
+
+            window.requestAnimFrame(draw);
+        </script>
+
+</body>
+
+</html>

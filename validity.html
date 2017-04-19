@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Validity: Statistics for Visual Thinkers</title>
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/images/apple-touch-icon-114x114.png">
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700,300|Alegreya:400,400italic,700,700italic|Fira+Mono' rel='stylesheet' type='text/css'>
+
+    <!-- Plugins -->
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/ionicons.min.css" rel="stylesheet">
+    <link href="assets/css/simpletextrotator.css" rel="stylesheet">
+    <link href="assets/css/magnific-popup.css" rel="stylesheet">
+    <link href="assets/css/owl.carousel.css" rel="stylesheet">
+    <link href="assets/css/superslides.css" rel="stylesheet">
+    <link href="assets/css/vertical.css" rel="stylesheet">
+    <link href="assets/css/animate.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/component.css" />
+
+
+    <!-- Template core CSS -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+
+    <style type="text/css">
+    body {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+        
+        body.wrong {
+            -webkit-animation: bg-red 1s ease-in;
+            animation: bg-red 1s ease-in;
+        }
+        
+        body.correct {
+            -webkit-animation: bg-green 1s ease-in;
+            animation: bg-green 1s ease-in;
+        }
+        
+        #inspiration {
+            position: fixed;
+            right: 1em;
+            bottom: 1em;
+        }
+        
+        #inspiration a {
+            display: inline-block;
+            float: left;
+            text-decoration: none;
+            font-weight: bold;
+            color: white;
+            -webkit-transition: all 1s ease;
+            transition: all 1s ease;
+        }
+        
+        #inspiration a:hover {
+            color: #212121;
+        }
+        
+        #inspiration p {
+            margin: 0;
+            padding-left: .4em;
+            display: inline-block;
+            float: right;
+            color: rgba(100, 100, 100, 0.6);
+        }
+        
+        #pin {
+            background: #fafafa;
+            width: 25em;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            padding: 1em;
+            border-radius: .3em;
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+            margin: auto;
+            color: rgba(100, 100, 100, 0.2);
+        }
+        
+        .dots {
+            width: 50%;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-justify-content: space-around;
+            -ms-flex-pack: distribute;
+            justify-content: space-around;
+            padding: 1em;
+            padding-top: 3em;
+        }
+        
+        .dot {
+            position: relative;
+            background: rgba(100, 100, 100, 0.2);
+            border-radius: 0.8em;
+            width: 0.8em;
+            height: 0.8em;
+            -webkit-transform: scale3d(0.7, 0.7, 0.7);
+            transform: scale3d(0.7, 0.7, 0.7);
+        }
+        
+        .dot.active {
+            -webkit-animation: growDot .5s ease;
+            animation: growDot .5s ease;
+            -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+        }
+        
+        .dot.wrong {
+            -webkit-animation: wrong .9s ease;
+            animation: wrong .9s ease;
+        }
+        
+        .dot.correct {
+            -webkit-animation: correct .9s ease;
+            animation: correct .9s ease;
+        }
+        
+        #pin p {
+            font-size: .8em;
+        }
+        
+        .numbers {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-flex-flow: row wrap;
+            -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-justify-content: space-around;
+            -ms-flex-pack: distribute;
+            justify-content: space-around;
+            -webkit-align-content: flex-end;
+            -ms-flex-line-pack: end;
+            align-content: flex-end;
+            margin: 2em 0;
+        }
+        
+        .number {
+            position: relative;
+            width: 2.5em;
+            height: 2.5em;
+            margin: 0.5em;
+            border-radius: 2.5em;
+            border: 2px solid rgba(100, 100, 100, 0);
+            text-align: center;
+            line-height: 2.5em;
+            font-weight: 400;
+            font-size: 1.8em;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-transition: all .5s ease;
+            transition: all .5s ease;
+        }
+        
+        .number:hover {
+            color: rgba(100, 100, 100, 0.5);
+        }
+        
+        .number:hover:before {
+            border: 2px solid rgba(100, 100, 100, 0.5);
+        }
+        
+        .number:before {
+            content: "";
+            position: absolute;
+            left: -2px;
+            width: 2.5em;
+            height: 2.5em;
+            border: 2px solid rgba(100, 100, 100, 0.1);
+            border-radius: 2.5em;
+            -webkit-transition: all .5s ease;
+            transition: all .5s ease;
+        }
+        
+        .number.grow:before {
+            -webkit-animation: grow .6s ease;
+            animation: grow .6s ease;
+        }
+        
+        @-webkit-keyframes growDot {
+            100% {
+                background: white;
+                -webkit-transform: scale3d(0.9, 0.9, 0.9);
+                transform: scale3d(0.9, 0.9, 0.9);
+            }
+        }
+        
+        @keyframes growDot {
+            100% {
+                background: white;
+                -webkit-transform: scale3d(0.9, 0.9, 0.9);
+                transform: scale3d(0.9, 0.9, 0.9);
+            }
+        }
+        
+        @-webkit-keyframes grow {
+            50% {
+                -webkit-transform: scale3d(1.5, 1.5, 1.5);
+                transform: scale3d(1.5, 1.5, 1.5);
+            }
+            100% {
+                -webkit-transform: scale3d(1, 1, 1);
+                transform: scale3d(1, 1, 1);
+            }
+        }
+        
+        @keyframes grow {
+            50% {
+                -webkit-transform: scale3d(1.5, 1.5, 1.5);
+                transform: scale3d(1.5, 1.5, 1.5);
+            }
+            100% {
+                -webkit-transform: scale3d(1, 1, 1);
+                transform: scale3d(1, 1, 1);
+            }
+        }
+        
+        @-webkit-keyframes wrong {
+            20% {
+                background: crimson;
+            }
+            40% {
+                -webkit-transform: translate(-15px, 0);
+                transform: translate(-15px, 0);
+            }
+            60% {
+                -webkit-transform: translate(10px, 0);
+                transform: translate(10px, 0);
+            }
+            80% {
+                -webkit-transform: translate(-5px, 0);
+                transform: translate(-5px, 0);
+            }
+        }
+        
+        @keyframes wrong {
+            20% {
+                background: crimson;
+            }
+            40% {
+                -webkit-transform: translate(-15px, 0);
+                transform: translate(-15px, 0);
+            }
+            60% {
+                -webkit-transform: translate(10px, 0);
+                transform: translate(10px, 0);
+            }
+            80% {
+                -webkit-transform: translate(-5px, 0);
+                transform: translate(-5px, 0);
+            }
+        }
+        
+        @-webkit-keyframes correct {
+            20% {
+                background: limegreen;
+            }
+            40% {
+                -webkit-transform: translate(0, -15px);
+                transform: translate(0, -15px);
+            }
+            60% {
+                -webkit-transform: translate(0, 10px);
+                transform: translate(0, 10px);
+            }
+            80% {
+                -webkit-transform: translate(0, -5px);
+                transform: translate(0, -5px);
+            }
+        }
+        
+        @keyframes correct {
+            20% {
+                background: limegreen;
+            }
+            40% {
+                -webkit-transform: translate(0, -15px);
+                transform: translate(0, -15px);
+            }
+            60% {
+                -webkit-transform: translate(0, 10px);
+                transform: translate(0, 10px);
+            }
+            80% {
+                -webkit-transform: translate(0, -5px);
+                transform: translate(0, -5px);
+            }
+        }
+        
+        @-webkit-keyframes bg-red {
+            50% {
+                background: crimson;
+            }
+        }
+        
+        @keyframes bg-red {
+            50% {
+                background: crimson;
+            }
+        }
+        
+        @-webkit-keyframes bg-green {
+            50% {
+                background: limegreen;
+            }
+        }
+        
+        @keyframes bg-green {
+            50% {
+                background: limegreen;
+            }
+        }
+        
+        .poll {
+            width: 300px;
+            margin: 20px 0 20px 0;
+            padding: 20px 40px 20px 40px;
+            border-radius: 4px;
+            background-color: #Fafafa;
+        }
+        
+        h3 {
+            margin: 20px 0 10px 0;
+        }
+        
+        ul,
+        li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        li {
+            padding: 10px 0 10px 0;
+            list-style-type: none;
+        }
+        
+        input[type="radio"] {
+            margin: 0 10px 0 0;
+        }
+        
+        input[type="submit"] {
+            margin: 20px 0 0 0;
+            background-color: #53626E;
+            color: #FFF;
+            border: 0;
+            width: 100%;
+            height: 40px;
+            font-size: 10pt;
+            border-radius: 4px;
+        }
+    }
+    </style>
+
+
+</head>
+
+<body>
+
+    <!-- PRELOADER -->
+    <div class="page-loader">
+        <div class="loader">Loading...</div>
+    </div>
+    <!-- /PRELOADER -->
+
+    <!-- OVERLAY MENU -->
+    <div id="overlay-menu" class="overlay-menu">
+
+        <a href="index.html#" id="overlay-menu-hide" class="navigation-hide"><i class="ion-close-round"></i></a>
+
+        <div class="overlay-menu-inner">
+            <nav class="overlay-menu-nav">
+
+                <ul id="nav">
+
+
+
+                    <li><a href="index.html">Why Designers Should Care About Statistics</a></li>
+                    <br />
+                    <li class="slidedown">
+                        <a href="index.html#">101: The Basics, Visualized</a>
+                        <ul>
+                            <li><a href="sampling.html">Sampling</a></li>
+                            <li><a href="typesofstudies.html">Types of Studies</a></li>
+                            <li><a href="typesofdata.html">Types of Data</a></li>
+                            <li><a href="p.html">Null Hypothesis Testing</a></li>
+                        </ul>
+                    </li>
+                    <br />
+                    <li class="slidedown">
+                        <a href="index.html#">102: Critical Considerations</a>
+                        <ul>
+                            <li><a href="validity.html">Validity</a></li>
+                            <li><a href="reliability.html">Reliability</a></li>
+                            <li><a href="control.html">Experimental Control</a></li>
+                            <li><a href="bias.html">Bias</a></li>
+                            <li><a href="misrepresentingdata.html">Misrepresenting Data</a></li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+            </nav>
+        </div>
+
+        <div class="overlay-navigation-footer">
+
+
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-12 text-center">
+                        <p class="copyright font-alt m-b-0">© 2016 James March</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /OVERLAY MENU -->
+
+    <!-- WRAPPER -->
+    <div class="wrapper">
+
+        <!-- NAVIGATION -->
+        <nav class="navbar navbar-custom navbar-transparent navbar-light navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+                    <!-- YOU LOGO HERE -->
+                    <a class="navbar-brand" href="index.html">
+                        <!-- IMAGE OR SIMPLE TEXT -->
+                        <img src="assets/images/data-logo.svg" width="40" alt="">
+                    </a>
+                </div>
+
+                <!-- ICONS NAVBAR -->
+                <ul id="icons-navbar" class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="index.html#" id="toggle-menu" class="show-overlay" title="Menu">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /ICONS NAVBAR -->
+
+                <ul class="extra-navbar nav navbar-nav navbar-right">
+
+                </ul>
+
+            </div>
+
+        </nav>
+        <!-- /NAVIGATION -->
+
+        <!-- HERO -->
+        <section class="module module-parallax bg-light-30">
+            <div id="totop"></div>
+
+            <!-- HERO TEXT -->
+
+
+
+
+
+            <div class="container">
+
+
+
+
+                <div class="col-md-12 text-center">
+                    <h1 class="mh-line-size-3 font-alt m-b-20">Validity</h1>
+
+                </div>
+
+            </div>
+            <!-- /HERO TEXT -->
+
+        </section>
+        <!-- /HERO -->
+
+
+
+
+        <div id="pin">
+            <div class="dots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+            <p>Enter the password</p>
+            <div class="numbers">
+                <div class="number">1</div>
+                <div class="number">2</div>
+                <div class="number">3</div>
+                <div class="number">4</div>
+                <div class="number">5</div>
+                <div class="number">6</div>
+                <div class="number">7</div>
+                <div class="number">8</div>
+                <div class="number">9</div>
+            </div>
+        </div>
+
+
+
+
+
+        <!-- PARAGRAPH -->
+        <section class="module">
+
+            <div class="container">
+
+                <!-- MODULE TITLE -->
+                <div class="row">
+
+
+                    <div class="col-md-8 col-md-offset-2">
+
+
+                        <h5>How do you know your study unlocks the thing you want it to unlock?</h5>
+                    </div>
+                </div>
+                <!-- /MODULE TITLE -->
+
+
+                <div class="row">
+
+                    <div class="col-md-8 col-md-offset-2">
+
+                        <p>Often as researchers, we are challenged by the means in which we unlock the answers to the questions we are asking. How is a child expressing an early onset of developmental issues? How engaged are your followers on Instagram with your account? How many people like the updated Facebook Timeline? How safe is the car that I'm driving?</p>
+
+                        <p>Once we figure out our question, then comes the oftentimes excrutiatingly difficult dilemma: <em>how do we measure and record data that effectively correspondends and supremely answer our question?</em></p>
+
+                        <p>Statistical validity refers to whether a statistical study is able to draw conclusions that are in agreement with statistical and scientific laws. If a conclusion is drawn from a given data set after experimentation, it is said to be scientifically valid if the conclusion drawn from the experiment is scientific and relies on mathematical and statistical laws. </p>
+
+
+
+                        <p>There are different kinds of statistical validities that are relevant to research and experimentation. Each of these is important in order for the experiment to give accurate predictions and draw valid conclusions. Some of these are:</p>
+                        <blockquote>
+                            <h5>Construct Validity</h5> A type of statistical validity that ensures that the actual experimentation and data collection conforms to the theory that is being studied. Construct validity encompasses the big idea of measurement in a study. Are you actually measuring the right thing? Have you figured out a way to measure the problem, theory, hypothesis, or assumption that you wish to learn more about?
+                            <br />
+                        </blockquote>
+
+
+                        <blockquote>
+                            <h5>Divergent or Discriminant Validity</h5> This validity ensures that if the required theory predicts that one variable doesn't correlate with others, then statistics need to confirm this.
+                        </blockquote>
+
+                        <blockquote>
+                            <h5>Content Validity</h5> This type of validity is important to make sure that the test or questionnaire that is prepared actually covers all aspects of the variable that is being studied. If the test is too narrow, then it will not predict what it claims.</blockquote>
+                        <blockquote>
+                            <h5>Face Validity</h5> This is related to content validity and is a quick starting estimate of whether the given experiment actually mimics the claims that are being verified. In other words, face validity measures whether or not the survey has the right questions in order to answer the research questions that it aims to answer.
+                        </blockquote>
+
+                        <blockquote>
+                            <h5>Conclusion Validity</h5> This type of validity ensures that the conclusion that is being reached from the data sets obtained from the experiment are actually right and justified. For example, the sample size should be large enough to predict any meaningful relationships between the variables being studied. If not, then conclusion validity is being violated.</blockquote>
+
+                        <blockquote>
+                            <h5>Internal Validity</h5>internal validity is a measure of the inherent relationship between cause and effect that are being studied in the experiment. For example, the controls used in the experiment must be meaningful and strict if the effect of one variable is being studied on another.
+                        </blockquote>
+
+                        <blockquote>
+                            <h5>External validity</h5> external validity is all about how to apply the results from this particular experiment to more general populations. External validity tells us whether or not we can generalize the results of this experiment to all other populations or to some populations with particular characteristics. These are the main types of statistical validity that one needs to consider during research and experimentation.</blockquote>
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIVIDER -->
+        <div class="col-md-4 col-md-offset-4">
+            <hr class="divider">
+        </div>
+
+        <!-- PARAGRAPH -->
+        <section class="module">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-8 col-md-offset-2">
+
+                        <p>Now, let's take a look at an example and see how many of these types of validities relate to even one single question on a survey.</p>
+
+                        <div class="poll">
+                            <h3>Does your pet eat meat?</h3>
+                            <ul>
+                                <li>
+                                    <input name="poll_value" type="radio" value="option 1" /> None</li>
+                                <li>
+                                    <input name="poll_value" type="radio" value="option 1" /> Some</li>
+                                <li>
+                                    <input name="poll_value" type="radio" value="option 1" /> A Few</li>
+                                <li>
+                                    <input name="poll_value" type="radio" value="option 1" /> A Lot</li>
+                            </ul>
+
+                            <h3>Do you own a pet?</h3>
+                            <ul>
+                                <li>
+                                    <input name="poll_value" type="radio" value="option 1" /> Yes</li>
+                                <li>
+                                    <input name="poll_value" type="radio" value="option 1" /> No</li>
+                                <li>
+                                    <input name="poll_value" type="radio" value="option 1" /> Maybe</li>
+                                <li>
+                                    <input name="poll_value" type="radio" value="option 1" /> Sometimes</li>
+
+                            </ul>
+
+                            <h3>Where do you live?</h3>
+                            <ul>
+                                <li>
+                                    <input name="poll_value" type="radio" value="option 1" /> Canada</li>
+                                <li>
+                                    <input name="poll_value" type="radio" value="option 1" /> United States</li>
+                                <li>
+                                    <input name="poll_value" type="radio" value="option 1" /> Yukon</li>
+                                <li>
+                                    <input name="poll_value" type="radio" value="option 1" /> Other</li>
+                            </ul>
+                            <input type="submit" value="Submit" /></input>
+
+                        </div>
+
+                        <p>Let's say we're trying to gather data as to whether owning a pet is good for your well-being. These poll question have numerous things that are problematic.</p>
+
+                        <p>Firstly, these questions suffers greatly from a lack of content and face validity. While only a few questions are shown here, the way in which they are designed falters the data greatly. The first question relates to a pets diet—we as researchers would get no valuable information from responses to this question (content and face validity).</p>
+                        <p>The second question places internal validity into question. The problematic responses are the last two. <em>No</em> as a response can be used as a method of obtaining a control group. For the latter responses, however, we succumb to a questionable grey area wirh our participants, making the study diluted with potentially fatalistic data.</p>
+                        <p>To externalize this data and say with a fair amount of confidence that owning a pet is good for your well-being, you'll also require a fair sample size, and must also have a sense of where your population limits reside. Are these Canadian citizens? Any specific region? Otherwise, our data will also succumb to <a href="bias.html">biases</a>.</p>
+
+
+                        </p>
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- DIVIDER -->
+        <div class="col-md-4 col-md-offset-4">
+            <hr class="divider">
+        </div>
+
+        <section class="module">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <h6>References</h6>
+                        <code>
+   Cozby, Paul C.. Methods in behavioral research. 10th ed. Boston: McGraw-Hill Higher Education, 2009. Print.
+Jump up ^ http://www.slideshare.net/JonathanJavid/measurement-validity-and-reliability. <br />
+Kendell, R; Jablensky, A (2003). "Distinguishing between the validity and utility of psychiatric diagnoses". The American Journal of Psychiatry 160 (1): 4–12. doi:10.1176/appi.ajp.160.1.4. PMID 12505793.<br />
+Kendler, KS (2006). "Reflections on the relationship between psychiatric genetics and psychiatric nosology". The American Journal of Psychiatry 163 (7): 1138–46. doi:10.1176/appi.ajp.163.7.1138. PMID 16816216.<br />
+Perri, FS; Lichtenwald, TG (2010). "The Precarious Use Of Forensic Psychology As Evidence: The Timothy Masters Case" (PDF). Champion Magazine (July): 34–45.</code>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGINATION -->
+        <section class="module">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4 text-center text-italic text-pagination">
+                        <A href="p.html">&#8592; null hypothesis testing</A> &#8212;
+                        <A href="reliability.html">reliability &#8594;</A>
+                    </div>
+                </div>
+        </section>
+        <!-- /PAGINATION -->
+
+
+        <!-- FOOTER -->
+        <footer class="module bg-light">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+                        <p class="copyright text-center m-b-0">© 2016 James March<br /><a href="colophon.html">Colophon &rarr;</a></p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </footer>
+        <!-- /FOOTER -->
+
+        </div>
+        <!-- /WRAPPER -->
+
+        <!-- SCROLLTOP -->
+        <div class="scroll-up">
+            <a href="#totop"><i class="fa fa-angle-double-up"></i></a>
+        </div>
+
+        <!-- Javascript files -->
+        <script src="assets/js/jquery-2.1.3.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.superslides.min.js"></script>
+        <script src="assets/js/jquery.mb.YTPlayer.min.js"></script>
+        <script src="assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="assets/js/owl.carousel.min.js"></script>
+        <script src="assets/js/jquery.simple-text-rotator.min.js"></script>
+        <script src="assets/js/imagesloaded.pkgd.js"></script>
+        <script src="assets/js/isotope.pkgd.min.js"></script>
+        <script src="assets/js/packery-mode.pkgd.min.js"></script>
+        <script src="assets/js/appear.js"></script>
+        <script src="assets/js/jquery.easing.1.3.js"></script>
+        <script src="assets/js/wow.min.js"></script>
+        <script src="assets/js/jqBootstrapValidation.js"></script>
+        <script src="assets/js/jquery.fitvids.js"></script>
+        <script src="assets/js/jquery.parallax-1.1.3.js"></script>
+        <script src="assets/js/smoothscroll.js"></script>
+        <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+        <script src="assets/js/gmaps.js"></script>
+        <script src="assets/js/contact.js"></script>
+        <script src="assets/js/custom.js"></script>
+        <script src="assets/js/TweenLite.min.js"></script>
+        <script src="assets/js/EasePack.min.js"></script>
+        <script src="assets/js/rAF.js"></script>
+        <script type="text/javascript">
+            (function () {
+                var input = "",
+                    correct = "1593";
+
+                var dots = document.querySelectorAll(".dot"),
+                    numbers = document.querySelectorAll(".number");
+                dots = Array.prototype.slice.call(dots);
+                numbers = Array.prototype.slice.call(numbers);
+
+                numbers.forEach(function (number, index) {
+                    number.addEventListener('click', function () {
+                        number.className += ' grow';
+                        input += (index + 1);
+                        dots[input.length - 1].className += ' active';
+                        if (input.length >= 4) {
+                            if (input !== correct) {
+                                dots.forEach(function (dot, index) {
+                                    dot.className += " wrong";
+                                });
+                                document.body.className += " wrong";
+                            } else {
+                                dots.forEach(function (dot, index) {
+                                    dot.className += " correct";
+                                });
+                                document.body.className += " correct";
+                            }
+                            setTimeout(function () {
+                                dots.forEach(function (dot, index) {
+                                    dot.className = "dot";
+                                });
+                                input = "";
+                            }, 900);
+                            setTimeout(function () {
+                                document.body.className = "";
+                            }, 1000);
+                        }
+                        setTimeout(function () {
+                            number.className = 'number';
+                        }, 1000);
+                    });
+                });
+            })();
+        </script>
+
+</body>
+
+</html>
